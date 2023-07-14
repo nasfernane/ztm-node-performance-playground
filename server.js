@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 app.get('/timer', (req, res) => {
   // delay the response
   delay(5000);
-  res.send(`Ding ding ding! ${process.pid}`);
+  res.send(`Beep Beep Beep! ${process.pid}`);
 })
 
 
@@ -51,6 +51,24 @@ app.listen(PORT, () => {
 });
 
 // Au lieu de créer un cluster qu'on fork selon le nombre de cpus disponibles, on peut lancer via pm2 qui intègre directement le clustering en spécifiant le nombre d'instances ou en ouvrant le nombre max
-// ex : pm2 start server.js -i 8
-// ex : pm2 start server.js -i max
+// ex : pm2 start server.js -l logs.txt -i 8
+// ex : pm2 start server.js -l logs.txt -i max
+
+// regarder le détail d'un process spécifique avec show
+// ex: pm2 show 0
+
+// interrompre un process spécifique avec stop
+// ex: pm2 stop 4
+
+// relancer un process spécifique avec start
+// pm2 start 4
+
+// monitorer les processus avec monit
+// pm2 monit
+
+// restart all
+// pm2 restart server
+
+// zero downtime restart
+// pm2 reload server
 
